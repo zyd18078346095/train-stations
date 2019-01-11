@@ -17,7 +17,7 @@ from stationcrawl.TrainSpider import parse_train_no_json
 from stationcrawl.TrainSpider import parse_station_info_json
 from stationcrawl.ArgList import build_all_list
 from stationcrawl.ArgList import get_key
-from stationcrawl.StationDict import station_dict
+from stationcrawl.Constants import STATION_DICT
 
 mutexLock = threading.Lock()
 
@@ -42,16 +42,16 @@ def start(arg):
         # 解析沿途停靠站点信息
         station_info_list = parse_station_info_json(station_info_text)
         # 如果到达站点不是这趟列车的终点，就不保存这趟列车数据，防止爬重复
-        if arg[2] != station_dict[station_info_list[2]]:
+        if arg[2] != STATION_DICT[station_info_list[2]]:
             return
         else:
             # 格式化车次，出发站，到达站
             simple_train_no = station_info_list[0]
-            from_station = get_key(station_dict, arg[1])
-            to_station = get_key(station_dict, arg[2])
+            from_station = get_key(STATION_DICT, arg[1])
+            to_station = get_key(STATION_DICT, arg[2])
             print(threading.current_thread().name + ' ->', [simple_train_no, from_station, to_station])
             # 存储为json文件，一个地址一个文件夹，不用考虑并发问题，不用加锁
-            path = DIR_NAME + '/' + arg[0] + '/' + from_station + '/' + to_station + '/' + simple_train_no + '.json'
+            path = DIR_NAME + '/' + str(arg[0]) + '/' + from_station + '/' + to_station + '/' + simple_train_no + '.json'
             FileUtils.save_file(path, station_info_text)
 
             # mutexLock.acquire()
