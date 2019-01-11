@@ -1,6 +1,7 @@
-# 12306爬虫
-
+﻿# 12306爬虫
 **注：爬取[12306网](https://kyfw.12306.cn)上的车次信息的爬虫，仅供交流学习之用，请勿用于商业用途**
+
+## **项目地址：https://gitee.com/zsyoung01/train**
 
 ## 介绍
 12306爬虫，抓取指定城市，始发和经过的所有车次信息
@@ -20,7 +21,7 @@
 - pip3 install retrying
 
 ## 项目结构
-![](http://i.imgur.com/ZtBXF6v.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190111114612388.png)
 
 ## 代码说明
 - Main.py -> 主程序入口，业务处理
