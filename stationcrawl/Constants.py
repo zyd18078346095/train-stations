@@ -34,10 +34,10 @@ USER_AGENTS = [
 ]
 
 # 请求时间间隔
-SLEEP_TIME = 2.5
+SLEEP_TIME = 2
 
 # 线程数
-THREAD_COUNT = 8
+THREAD_COUNT = 2
 
 # 成人票网址后缀
 PURPOSE_CODES = '&purpose_codes=ADULT'

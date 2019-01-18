@@ -22,8 +22,9 @@ def parse_train_no_json(train_no_json):
     result = data['result']
     for r in result:
         list_temp = r.split("|")
-        train_no = list_temp[list_temp.index("预订") + 1]
-        train_no_list.append(train_no)
+        if list_temp.__contains__("预订"):
+            train_no = list_temp[list_temp.index("预订") + 1]
+            train_no_list.append(train_no)
     return train_no_list
 
 
