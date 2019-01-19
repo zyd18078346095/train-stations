@@ -35,7 +35,8 @@ def start(arg):
 
     """根据获取的火车车次，查询沿途车站停靠信息"""
     for train_no in parse_train_no_json(train_no_text):
-        # 这里需要休息一下，否则一趟线路每个车站都去请求链接，会造成ip访问频繁，被12306封停
+        # 这里需要休息一下，否则遇到重庆到北京这种火车比较多的线路，
+        # 每个车次都不间断去请求链接，会造成ip访问频繁，被12306封停
         time.sleep(SLEEP_TIME)
         station_info_url = STATION_INFO_BASE_URL + 'train_no=' + train_no + '&from_station_telecode=' + str(
             arg[1]) + '&to_station_telecode=' + str(arg[2]) + '&depart_date=' + str(arg[0])
